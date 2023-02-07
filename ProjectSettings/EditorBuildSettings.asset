@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/6.Scaling.unity
     guid: 829d5def34d63e4408f9793fe94837ac
+  - enabled: 1
+    path: Assets/Scenes/2-1.ObjectHandle.unity
+    guid: 96a560f316fe37c42beef807ba4e035d
   m_configObjects: {}
