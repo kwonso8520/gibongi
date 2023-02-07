@@ -9,10 +9,14 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     public float speed = 5;
     private float horizontal;
+    private Animator animator;
+    private SpriteRenderer renderer;
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -24,6 +28,15 @@ public class Player : MonoBehaviour
     }
     private void PlayerMove()
     {
+        animator.SetFloat("speed", Mathf.Abs(horizontal));
+        if (horizontal < 0)
+        {
+            renderer.flipX = true;
+        }
+        else
+        {
+            renderer.flipX = false;
+        }
         rigid.velocity = new Vector2(horizontal * speed, rigid.velocity.y);
     }
     private void OnCollisionEnter2D(Collision2D collision)
