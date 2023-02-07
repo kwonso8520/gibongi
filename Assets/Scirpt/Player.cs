@@ -2,38 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rigid2D;
-    float walkForce = 10.0f;
-    float maxWalkSpeed = 5f;
+    Rigidbody2D rigidbody;
+    public float speed = 5;
+    private float horizontal;
     // Start is called before the first frame update
     void Start()
     {
-        this.rigid2D = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        int key = 0;
-        if (Input.GetKey(KeyCode.RightArrow)) key = 1;
-        if (Input.GetKey(KeyCode.LeftArrow)) key = -1;
-
-     
-        float speedx = Mathf.Abs(this.rigid2D.velocity.x);
-
+        horizontal = Input.GetAxis("Horizontal");
+        PlayerMove();
         
-        if (speedx < this.maxWalkSpeed)
+    }
+    private void PlayerMove()
+    {
+        rigidbody.velocity = new Vector2(horizontal * speed, rigidbody.velocity.y);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Computer"))
         {
-            this.rigid2D.AddForce(transform.right * key * this.walkForce);
-        }
-
-        
-        if (key != 0)
-        {
-            transform.localScale = new Vector3(key, 1, 1);
+            SceneManager.LoadScene("2.GameScene");
         }
     }
 }
