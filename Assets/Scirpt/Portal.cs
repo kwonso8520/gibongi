@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameObject fkey;
+
+    [SerializeField]
+    private int sceneNum;
+
+    private void Start()
     {
-        
+        fkey = transform.Find("fkey").gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        fkey.SetActive(true);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+            SceneManager.LoadScene(sceneNum);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        fkey.SetActive(false);
     }
 }
