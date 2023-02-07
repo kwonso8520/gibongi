@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.GameObject.unity
     guid: e31c8efa2d7b46445850c6e8d40fb4ba
+  - enabled: 1
+    path: Assets/Scenes/5.Rotation.unity
+    guid: 14351c89229390c4db83a82e535c9c3d
+  - enabled: 1
+    path: Assets/Scenes/6.Scaling.unity
+    guid: 829d5def34d63e4408f9793fe94837ac
   m_configObjects: {}
