@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467b028975e8eda4eaed3119508daf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneNum: 6
+  sceneNum: 9
 --- !u!136 &283389675
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3997,7 +3997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467b028975e8eda4eaed3119508daf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneNum: 9
+  sceneNum: 8
 --- !u!136 &2026796416
 CapsuleCollider:
   m_ObjectHideFlags: 0
