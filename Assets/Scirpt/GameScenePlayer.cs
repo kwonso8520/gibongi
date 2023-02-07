@@ -14,7 +14,7 @@ public class GameScenePlayer : MonoBehaviour
 
     void Start()
     {
-        moveSpeed = 5.0f;
+        moveSpeed = 10.0f;
         jumpPower = 7.0f;
         gravity = 9.8f;
 
