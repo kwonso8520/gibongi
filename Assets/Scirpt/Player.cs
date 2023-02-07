@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rigidbody;
+    Rigidbody2D rigid;
     public float speed = 5;
     private float horizontal;
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     }
     private void PlayerMove()
     {
-        rigidbody.velocity = new Vector2(horizontal * speed, rigidbody.velocity.y);
+        rigid.velocity = new Vector2(horizontal * speed, rigid.velocity.y);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
