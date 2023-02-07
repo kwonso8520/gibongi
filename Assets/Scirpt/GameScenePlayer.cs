@@ -11,6 +11,8 @@ public class GameScenePlayer : MonoBehaviour
     private CharacterController controller; // 캐릭터 컨트롤러.
     private Vector3 moveDir;                // 방향을 담을 벡터.
 
+    private GameObject fkey;
+
     void Start()
     {
         moveSpeed = 5.0f;
@@ -19,6 +21,8 @@ public class GameScenePlayer : MonoBehaviour
 
         moveDir = Vector3.zero;
         controller = GetComponent<CharacterController>();
+
+        fkey = GameObject.Find("fkey");
     }
 
     void Update()
@@ -50,14 +54,26 @@ public class GameScenePlayer : MonoBehaviour
             // 0, 10, 0 으로 좌표 바꾸기
             transform.position
                = new Vector3(0, 15, -13);
-            
         }
-
-
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "portal")
+            fkey.SetActive(true);
+    }
 
-   
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "portal")
+        {
 
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name == "portal")
+            fkey.SetActive(false);
+    }
 }
