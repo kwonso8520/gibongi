@@ -352,8 +352,7 @@ MonoBehaviour:
   text2: {fileID: 422990063}
   text3: {fileID: 0}
   endcolor: {fileID: 676257489}
-  txtobj: {fileID: 0}
-  creditpos: {fileID: 0}
+  creditpos: {fileID: 1017194441}
 --- !u!1 &764833931
 GameObject:
   m_ObjectHideFlags: 0
