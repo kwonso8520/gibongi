@@ -18,6 +18,8 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         fkey.SetActive(true);
+        if (Input.GetKeyDown(KeyCode.F))
+            SceneManager.LoadScene(sceneNum);
     }
 
     private void OnTriggerStay(Collider other)
