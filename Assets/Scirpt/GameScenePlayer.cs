@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameScenePlayer : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class GameScenePlayer : MonoBehaviour
 
     private CharacterController controller; // 캐릭터 컨트롤러.
     private Vector3 moveDir;                // 방향을 담을 벡터.
+
+    [SerializeField]
+    private GameObject fkey;
 
     void Start()
     {
@@ -50,14 +54,27 @@ public class GameScenePlayer : MonoBehaviour
             // 0, 10, 0 으로 좌표 바꾸기
             transform.position
                = new Vector3(0, 15, -13);
-            
         }
-
-
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Portal")
+            fkey.SetActive(true);
+    }
 
-   
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "Portal")
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+                SceneManager.LoadScene(4);
+        }
+    }
 
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name == "Portal")
+            fkey.SetActive(false);
+    }
 }
