@@ -5,35 +5,59 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rigid2D;
-    float walkForce = 10.0f;
-    float maxWalkSpeed = 5f;
-    // Start is called before the first frame update
+    public float moveSpeed; // 이동스피드.
+    public float jumpPower; // 점프파워.
+    public float gravity;   // 중력.
+
+    private CharacterController controller; // 캐릭터 컨트롤러.
+    private Vector3 moveDir;                // 방향을 담을 벡터.
+
     void Start()
     {
-        this.rigid2D = GetComponent<Rigidbody2D>();
+        moveSpeed = 5.0f;
+        jumpPower = 7.0f;
+        gravity = 9.8f;
+
+        moveDir = Vector3.zero;
+        controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        int key = 0;
-        if (Input.GetKey(KeyCode.RightArrow)) key = 1;
-        if (Input.GetKey(KeyCode.LeftArrow)) key = -1;
-
-     
-        float speedx = Mathf.Abs(this.rigid2D.velocity.x);
-
-        
-        if (speedx < this.maxWalkSpeed)
+        // 현재 캐릭터가 땅에 있는가?
+        if (controller.isGrounded)
         {
-            this.rigid2D.AddForce(transform.right * key * this.walkForce);
+            // 움직임 키보드로부터 입력받기. 
+            moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+            // 이동스피드 적용.
+            moveDir *= moveSpeed;
+
+            // 점프키(스페이스)를 눌렀다면, 점프파워 적용.
+            if (Input.GetButton("Jump"))
+                moveDir.y = jumpPower;
+
         }
 
-        
-        if (key != 0)
+        // 중력 적용.
+        moveDir.y -= gravity * Time.deltaTime;
+
+        // 캐릭터 움직임.
+        controller.Move(moveDir * Time.deltaTime);
+
+
+        if (transform.position.y < -20)
         {
-            transform.localScale = new Vector3(key, 1, 1);
+            // 0, 10, 0 으로 좌표 바꾸기
+            transform.position
+               = new Vector3(0, 15, -13);
+            GetComponent<AudioSource>().Play();
         }
+
+
     }
+
+
+    
+
 }
