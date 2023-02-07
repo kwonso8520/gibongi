@@ -12,6 +12,7 @@ public class GameScenePlayer : MonoBehaviour
     private CharacterController controller; // 캐릭터 컨트롤러.
     private Vector3 moveDir;                // 방향을 담을 벡터.
 
+    [SerializeField]
     private GameObject fkey;
 
     void Start()
@@ -22,8 +23,6 @@ public class GameScenePlayer : MonoBehaviour
 
         moveDir = Vector3.zero;
         controller = GetComponent<CharacterController>();
-
-        fkey = GameObject.Find("fkey");
     }
 
     void Update()
@@ -60,13 +59,13 @@ public class GameScenePlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "portal")
+        if (other.name == "Portal")
             fkey.SetActive(true);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.name == "portal")
+        if (other.name == "Portal")
         {
             if (Input.GetKeyDown(KeyCode.F))
                 SceneManager.LoadScene(4);
@@ -75,7 +74,7 @@ public class GameScenePlayer : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.name == "portal")
+        if (other.name == "Portal")
             fkey.SetActive(false);
     }
 }
