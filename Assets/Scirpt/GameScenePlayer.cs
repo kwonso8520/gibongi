@@ -18,6 +18,7 @@ public class GameScenePlayer : MonoBehaviour
     {
         moveSpeed = 10.0f;
         gravity = 9.8f;
+        jumpPower = 7.0f;
 
         moveDir = Vector3.zero;
         controller = GetComponent<CharacterController>();
