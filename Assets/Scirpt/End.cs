@@ -35,7 +35,7 @@ public class End : MonoBehaviour
         text2.SetActive(false);
         endcolor.GetComponent<Image>().color = Color.black;
         yield return new WaitForSeconds(1f);
-        for (int i = -600; i < 1400; i++)
+        for (int i = -600; i < 1700; i++)
         {
             creditpos.GetComponent<RectTransform>().anchoredPosition = new Vector3(-100, i, 0);
             yield return null;
