@@ -11,6 +11,8 @@ public class GameScenePlayer : MonoBehaviour
 
     private CharacterController controller; // 캐릭터 컨트롤러.
     private Vector3 moveDir;                // 방향을 담을 벡터.
+    [SerializeField]
+    private Vector3 spawnPoint = new Vector3(0, 15, -13);
 
     void Start()
     {
@@ -20,8 +22,6 @@ public class GameScenePlayer : MonoBehaviour
 
         moveDir = Vector3.zero;
         controller = GetComponent<CharacterController>();
-
-
     }
 
     void Update()
@@ -51,8 +51,7 @@ public class GameScenePlayer : MonoBehaviour
         if (transform.position.y < -20)
         {
             // 0, 10, 0 으로 좌표 바꾸기
-            transform.position
-               = new Vector3(0, 15, -13);
+            transform.position = spawnPoint;
         }
     }
 }
