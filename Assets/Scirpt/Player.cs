@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     {
         if (collision.collider.CompareTag("Computer"))
         {
-            SceneManager.LoadScene("2.GameScene");
+            SceneManager.LoadScene("1-2.EnterComputer");
         }
     }
 }

@@ -19,6 +19,6 @@ public class ComputerSystem : MonoBehaviour
     IEnumerator video_delay()
     {
         yield return new WaitForSeconds(2.7f);
-        SceneManager.LoadScene("1.SchoolScene");
+        SceneManager.LoadScene("2.GameScene");
     }
 }
