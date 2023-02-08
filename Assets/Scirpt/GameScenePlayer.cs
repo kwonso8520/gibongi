@@ -17,7 +17,6 @@ public class GameScenePlayer : MonoBehaviour
     void Start()
     {
         moveSpeed = 10.0f;
-        jumpPower = 7.0f;
         gravity = 9.8f;
 
         moveDir = Vector3.zero;
